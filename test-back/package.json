@@ -1,0 +1,29 @@
+{
+    "name": "swagger-test-task",
+    "version": "1.0.0",
+    "description": "Test task for job application",
+    "main": "app.js",
+    "scripts": {
+        "generate": "node src/db/csv-gen.js",
+        "start": "nodemon --inspect app.js",
+        "test-functional": "mocha ./tests/functional/*.js",
+        "test-integration": "mocha ./tests/integration/*.js"
+    },
+    "license": "",
+    "dependencies": {
+        "connect": "^3.7.0",
+        "csv-parser": "^3.0.0",
+        "csv-writer": "^1.6.0",
+        "lodash": "^4.17.20",
+        "pg": "^8.3.3",
+        "pino": "^6.6.1",
+        "swagger-tools": "^0.10.4",
+        "yaml": "^1.10.0"
+    },
+    "devDependencies": {
+        "@hapi/code": "^8.0.1",
+        "axios": "^0.19.2",
+        "mocha": "^7.1.1",
+        "nodemon": "^2.0.2"
+    }
+}

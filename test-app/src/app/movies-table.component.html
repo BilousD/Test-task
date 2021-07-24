@@ -1,0 +1,47 @@
+<mat-form-field appearance="standard">
+  <span>Filter:</span>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Genre1; Genre2; 2019; strict">
+  <mat-hint>Use strict to search for movies having both genres or to exactly match genres</mat-hint>
+</mat-form-field>
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <div class="example-table-container">
+
+    <table mat-table [dataSource]="data" class="example-table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let row">{{row.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="genre1">
+        <th mat-header-cell *matHeaderCellDef>Genre 1</th>
+        <td mat-cell *matCellDef="let row">{{row.genre1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="genre2">
+        <th mat-header-cell *matHeaderCellDef>Genre 2</th>
+        <td mat-cell *matCellDef="let row">{{row.genre2}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef>Year</th>
+        <td mat-cell *matCellDef="let row">{{row.year}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [length]="resultsLength" [pageSizeOptions]="pageSize"></mat-paginator>
+</div>
